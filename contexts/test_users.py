@@ -10,7 +10,7 @@ from pages.add_membership_page import AddMembershipPage
 
 
 class TestUsers(AbstractContext):
-    def test_create_user(self):
+    def test_a_create_user(self):
         admin_page = AdminLoginPage(self.driver)
         admin_page.go()
         admin_page.wait(3)
@@ -26,7 +26,7 @@ class TestUsers(AbstractContext):
         element = users_page.get_new_user_name()
         assert element.text == 'Orlando Sosa'
 
-    def test_create_membership(self):
+    def test_b_create_membership(self):
         admin_page = AdminLoginPage(self.driver)
         admin_page.go()
         admin_page.wait(3)
@@ -39,13 +39,30 @@ class TestUsers(AbstractContext):
         memb_page = MembershipPage(self.driver)
         memb_page.create_membership()
         add_membership = AddMembershipPage(self.driver)
-        test_name = 'test'
+        test_name = memb_page.set_membership_name()
         add_membership.add_test_membership(test_name)
         memb_page.click_pop_up_finish()
         membership_name = memb_page.get_new_membership_name()
         assert test_name == membership_name.text
 
-    def test_erase_user(self):
+    def test_c_erase_membership(self):
+        admin_page = AdminLoginPage(self.driver)
+        admin_page.go()
+        admin_page.wait(3)
+        admin_page.login()
+        admin_page.wait(10)
+        home_adm_page = HomeAdminPage(self.driver)
+        home_adm_page.click_site_name()
+        wp_adm_page = WpAdminPage(self.driver)
+        wp_adm_page.click_membership()
+        memb_page = MembershipPage(self.driver)
+        count_memberships = memb_page.get_count_memberships()
+        memb_page.erase_test_membership()
+        new_count_memberships = memb_page.get_count_memberships()
+        assert count_memberships != new_count_memberships
+
+
+    def test_d_erase_user(self):
         admin_page = AdminLoginPage(self.driver)
         admin_page.go()
         admin_page.wait(3)

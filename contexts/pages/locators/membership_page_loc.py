@@ -8,3 +8,6 @@ class MembershipPageLocator(AbstractLocator):
     CREATE_MEMB_BUTTON = (By.ID,'create_new_ms_button')
     POP_UP_MEMBERSHIP = (By.CLASS_NAME,'button-primary')
     MEMBERSHIP_NAME = (By.CLASS_NAME,'the-name')
+    DELETE = (By.LINK_TEXT,'Delete')
+    CONFIRM_DELETE = (By.CLASS_NAME, 'button-primary')
+    MEMBERSHIP_ITEMS = (By.CLASS_NAME,'item')
