@@ -29,6 +29,10 @@ class UsersPage(AbstractPage):
         return len(elements)
 
     def erase_created_user(self):
-        self.check_new_user_box()
-        self.erase_action_selected_users()
-        self.apply_button()
+        element = self.get_new_user_name()
+        if element.text == 'Orlando Sosa':
+            self.check_new_user_box()
+            self.erase_action_selected_users()
+            self.apply_button()
+        else:
+            self.driver.quit()
