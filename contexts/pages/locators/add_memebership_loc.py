@@ -7,3 +7,4 @@ class AddMembershipLocator(AbstractLocator):
     __metaclass__ = ABCMeta
     DRIPPED_CONTENT_RADIO = (By.CLASS_NAME,'wpmui-radio')
     MEMBERSHIP_NAME = (By.ID,'name')
+    SAVE_MEMBERSHIP = (By.ID,'save')

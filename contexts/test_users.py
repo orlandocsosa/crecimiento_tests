@@ -5,6 +5,8 @@ from pages.wp_admin_page import WpAdminPage
 from pages.new_user_page import NewUserPage
 from pages.users_page import UsersPage
 from pages.confirm_erase_page import ConfirmErasePage
+from pages.membership_page import MembershipPage
+from pages.add_membership_page import AddMembershipPage
 
 
 class TestUsers(AbstractContext):
@@ -33,6 +35,15 @@ class TestUsers(AbstractContext):
         home_adm_page = HomeAdminPage(self.driver)
         home_adm_page.click_site_name()
         wp_adm_page = WpAdminPage(self.driver)
+        wp_adm_page.click_membership()
+        memb_page = MembershipPage(self.driver)
+        memb_page.create_membership()
+        add_membership = AddMembershipPage(self.driver)
+        test_name = 'test'
+        add_membership.add_test_membership(test_name)
+        memb_page.click_pop_up_finish()
+        membership_name = memb_page.get_new_membership_name()
+        assert test_name == membership_name.text
 
     def test_erase_user(self):
         admin_page = AdminLoginPage(self.driver)
