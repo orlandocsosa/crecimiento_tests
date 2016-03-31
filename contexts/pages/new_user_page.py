@@ -24,13 +24,13 @@ class NewUserPage(AbstractPage):
     def password(self, text):
         elements = self.driver.find_elements(*NewUserLocator.SHOW_PASS)
         element = elements[0]
-        element1 = self.driver.find_element(*NewUserLocator.ADMIN_BAR)
-        self.adjustedClick(element, element1)
+        elementAdminBar = self.driver.find_element(*NewUserLocator.ADMIN_BAR)
+        self.adjustedClick(element, elementAdminBar)
         element_two = self.driver.find_element(*NewUserLocator.PASS)
-        self.wait(1)
         element_two.click()
         element_two.send_keys(Keys.CONTROL + 'a')
         element_two.send_keys(Keys.BACKSPACE)
+        self.wait(1)
         element_two.send_keys(text)
         weak_pass = self.driver.find_element(*NewUserLocator.CONFIRM_PASS)
         weak_pass.click()

@@ -13,12 +13,12 @@ class AbstractPage(object):
         time.sleep(secs)
 
 
-    def adjustedClick(self, element,element1):
+    def adjustedClick(self, element, blockingElement):
         self.driver.execute_script(""
                                    "arguments[0].scrollIntoView(true); "
                                    "window.scrollBy("
                                    "0,"
                                    "arguments[1].offsetHeight * -1"
                                    ")"
-                                   "", element,element1) #pasar elemento navbar como arg[1] !!!
+                                   "", element,blockingElement) #pasar elemento navbar como arg[1] !!!
         element.click()
