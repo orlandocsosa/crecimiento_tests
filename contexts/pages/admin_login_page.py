@@ -22,5 +22,5 @@ class AdminLoginPage(AbstractPage):
 
     def login(self):
         self.enter_username_text('admin')
-        self.enter_password_text('ojSXooTv805aHI')
+        self.enter_password_text('****') #update with password
         self.click_submit()
